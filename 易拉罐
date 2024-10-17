@@ -1,0 +1,22 @@
+#coding=gbk
+import math
+import numpy as np
+#本程序中,长度单位为cm,体积单位为ml.
+d=0.02#宽度
+Vsteel=[]#存储所用钢材体积
+rate=[]#存储高与直径之比
+V=[330,350,500]#常见易拉罐容积
+for v in V:#分别对不同容积进行讨论
+    for h in np.arange(5.0,20.0,0.1): #高的取值范围与步长
+        for R in np.arange(3.0,15.0,0.1):#直径的取值范围与步长
+            PI=math.pi
+            y1=PI*(R-2*d)*(R-2*d)*(h-4*d)/4#易拉罐容积
+            if(y1>=v-5 and y1<=v+5):#易拉罐所需容积取值范围
+                y2=PI*R*R*h/4-y1#钢材体积
+                Vsteel.append(y2)#存储钢材体积
+                rate.append(h/R)#存储高与直径之比
+    print(v)
+    print(rate[Vsteel.index(min(Vsteel))])#输出所需钢材最少时的直径与高的比
+    Vsteel.clear()#清除存储值
+    rate.clear()#清除存储值
+    print("\n")

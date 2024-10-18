@@ -10,7 +10,7 @@ Vsteel=[]#存储所用钢材体积
 rate=[]#存储高与直径之比
 ratemin=[]
 V=[]
-for v in range(300,500,10):#分别对不同容积进行讨论
+for v in range(300,510,10):#分别对不同容积进行讨论
     V.append(v)
     for h in np.arange(5.0,20.0,0.1): #高的取值范围与步长
         for R in np.arange(3.0,15.0,0.1):#直径的取值范围与步长
